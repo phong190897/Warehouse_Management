@@ -38,6 +38,14 @@ namespace QuanLyKhoHang.XuLi
             db.ExecuteNonQuery(sql);
         }
 
+        public DataTable KiemTraTonTai(string maNhacc)
+        {
+            return db.Execute("SELECT DISTINCT A.MaNhaCC " +
+                "FROM NhaCC A, HangHoa B " +
+                "WHERE A.MaNhaCC = B.MaNhaCC " +
+                "AND B.MaNhaCC = N'" + maNhacc + "'");
+        }
+
         public void CapNhatNhaCC(string MaNhaCC, string TenNCC, 
             string DiaChi, string dt)
         {

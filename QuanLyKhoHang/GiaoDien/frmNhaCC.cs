@@ -95,19 +95,27 @@ namespace QuanLyKhoHang.GiaoDien
         {
             if (lsvNhaCC.SelectedItems.Count > 0)
             {
-                DialogResult dr = MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Xóa nhân viên", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dr == DialogResult.Yes)
+                dt = ncc.KiemTraTonTai(lsvNhaCC.SelectedItems[0].Text);
+                if(dt.Rows.Count > 0)
                 {
-                    if (lsvNhaCC.SelectedItems.Count > 0)
-                    {
-                        ncc.XoaNhaCC(txtMaNhaCC.Text);
-                        lsvNhaCC.Items.RemoveAt(lsvNhaCC.SelectedIndices[0]);
-                        clearForm();
-                        MessageBox.Show("Xóa thành công", "Thông báo");
-                    }
-                    else
-                        MessageBox.Show("Bạn cần chọn mẫu tin cần xóa");
+                    MessageBox.Show("Không thể xóa Nhà cung cấp này vì Nhà cung cấp xuất hiện trong Bảng Hàng Hóa", "THông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+                else
+                {
+                    DialogResult dr = MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Xóa nhân viên", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dr == DialogResult.Yes)
+                    {
+                        if (lsvNhaCC.SelectedItems.Count > 0)
+                        {
+                            ncc.XoaNhaCC(txtMaNhaCC.Text);
+                            lsvNhaCC.Items.RemoveAt(lsvNhaCC.SelectedIndices[0]);
+                            clearForm();
+                            MessageBox.Show("Xóa thành công", "Thông báo");
+                        }
+                        else
+                            MessageBox.Show("Bạn cần chọn mẫu tin cần xóa");
+                    }
+                }               
             }
             else
                 MessageBox.Show("Bạn cần chọn mẫu tin cần xóa!!", "Thông báo");

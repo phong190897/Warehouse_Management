@@ -53,7 +53,6 @@ namespace QuanLyKhoHang.GiaoDien
         private void frmSua_CTPN_Load(object sender, EventArgs e)
         {
             btnSua.Enabled = false;
-            btnThoat.Enabled = false;
             btnXoa.Enabled = false;
             HienThiDS_HH();
             HienDS_CTPN(txtMaPN.Text);

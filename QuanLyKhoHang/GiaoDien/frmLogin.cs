@@ -56,13 +56,17 @@ namespace QuanLyKhoHang.GiaoDien
             tg_dn = DateTime.Now.ToLocalTime().ToString();
             DataTable dt_qdn, dt_mk, dt_tk, dt_hoten = new DataTable();
             string hash_pw = sha256_hash(txtPWD.Text);
+            string hoten = "";
 
             dt_qdn = Login.Lay_QuyenDN(txtID.Text, hash_pw);
             dt_mk = Login.Lay_MK(txtID.Text, hash_pw);
             dt_tk = Login.LayTenTK(txtID.Text);
             dt_hoten = Login.layHoTen(txtID.Text, hash_pw);
 
-            string hoten = dt_hoten.Rows[0][0].ToString();
+            if(dt_hoten.Rows.Count > 0)
+            {
+               hoten = dt_hoten.Rows[0][0].ToString();
+            }            
 
             if(dt_tk.Rows.Count > 0)
             {
@@ -89,11 +93,11 @@ namespace QuanLyKhoHang.GiaoDien
                     frmmdi.Show();
                 }
                 else
-                    MessageBox.Show("Sai Mật Khẩu!!!!", "Thông báo");
+                    MessageBox.Show("Sai Mật Khẩu!!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                MessageBox.Show("Tài khoản không tồn tại!!!!", "Thông báo");
+                MessageBox.Show("Tài khoản không tồn tại!!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -122,6 +126,30 @@ namespace QuanLyKhoHang.GiaoDien
             t.Abort();
             this.Focus();
             txtID.Focus();
+        }
+
+        private void btnDangNhap_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == 13)
+            {
+                btnDangNhap_Click(sender, e);
+            }
+        }
+
+        private void txtID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                txtPWD.Focus();
+            }
+        }
+
+        private void txtPWD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                btnDangNhap_Click(sender, e);
+            }
         }
     }
 }

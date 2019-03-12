@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmThem_CTPN));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.txtDonGiaNhap = new DevExpress.XtraEditors.TextEdit();
             this.txtSoLuong = new DevExpress.XtraEditors.TextEdit();
@@ -278,6 +279,7 @@
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.lsvThemPN_CTPN);
             this.Controls.Add(this.layoutControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmThem_CTPN";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thêm Vào Chi Tiết Phiếu Nhập";

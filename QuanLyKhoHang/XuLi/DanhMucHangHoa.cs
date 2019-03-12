@@ -31,6 +31,22 @@ namespace QuanLyKhoHang.XuLi
             db.ExecuteNonQuery(sql);
         }
 
+        public DataTable KiemTraTonTai_HangHoa(string maDM)
+        {
+            return db.Execute("SELECT DISTINCT A.MaDanhMuc " +
+                "FROM Nganhhang A, HangHoa B " +
+                "WHERE A.MaDanhMuc = B.MaDanhMuc " +
+                "AND B.MaDanhMuc = N'" + maDM + "'");
+        }
+
+        public DataTable KiemTraTonTai_LoaiSP(string maDM)
+        {
+            return db.Execute("SELECT DISTINCT A.MaDanhMuc " +
+                "FROM Nganhhang A, LoaiSP B " +
+                "WHERE A.MaDanhMuc = B.MaDanhMuc " +
+                "AND B.MaDanhMuc = N'" + maDM + "'");
+        }
+
         public void XoaDMHH(string MaDanhMuc)
         {
             string sql = string.Format("DELETE FROM NganhHang WHERE " +

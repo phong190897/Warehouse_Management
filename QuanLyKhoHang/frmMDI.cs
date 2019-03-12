@@ -9,6 +9,7 @@ using QuanLyKhoHang.GiaoDien;
 using System.Windows.Forms;
 using System.Threading;
 using QuanLyKhoHang.GiaoDien_Report;
+using QuanLyKhoHang.XuLi;
 
 namespace QuanLyKhoHang
 {
@@ -21,6 +22,9 @@ namespace QuanLyKhoHang
         public static string usrName = "";
         public static string pwd = "";
         public string ID_DangNhap = "";
+        DataTable dt;
+        HangHoa hh;
+        public static string Quyendn;
 
         public frmMDI(string hoten, string quyendn, string TG_DN, string tentk)
         {
@@ -28,6 +32,9 @@ namespace QuanLyKhoHang
             lb_TenTK.Text = hoten;
             lb_TG_DN.Text = TG_DN;
             ID_DangNhap = tentk;
+            Quyendn = quyendn;
+            hh = new HangHoa();
+            dt = new DataTable();
             //Thread t = new Thread(new ThreadStart(StartForm));
             //t.Start();
             //Thread.Sleep(5000);
@@ -163,7 +170,21 @@ namespace QuanLyKhoHang
         private void frmMDI_Load(object sender, EventArgs e)
         {
             skin();
-            //SetButton(true);
+          
+                dt = hh.KiemTraHang();
+                System.Text.StringBuilder b = new System.Text.StringBuilder();
+                foreach (System.Data.DataRow r in dt.Rows)
+                {
+                    
+                    foreach (System.Data.DataColumn c in dt.Columns)
+                    {
+                        b.Append( c.ColumnName.ToString() + ":  " + r[c.ColumnName].ToString() + "\n");
+                    }
+                    b.Append("\n");
+                }
+                MessageBox.Show("\aCác mặt hàng sau cần phải nhập hàng: \n\n"  + b.ToString(), "Thông báo nhập hàng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //SetButton(true);
+            
         }
 
         private void btnHangHoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

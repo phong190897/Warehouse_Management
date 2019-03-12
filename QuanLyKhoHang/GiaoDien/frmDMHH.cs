@@ -79,19 +79,34 @@ namespace QuanLyKhoHang.GiaoDien
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-                DialogResult dr = MessageBox.Show("Bạn có chắc muốn xóa?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if(dr == DialogResult.Yes)
+            if(lsvDMHH.SelectedItems.Count > 0)
+            {
+                dt = DMHH.KiemTraTonTai_LoaiSP(lsvDMHH.SelectedItems[0].Text);
+                DataTable dt_hh = DMHH.KiemTraTonTai_HangHoa(lsvDMHH.SelectedItems[0].Text);
+                if (dt.Rows.Count > 0)
                 {
-                    DMHH.XoaDMHH(txtMaDM.Text);
-                    lsvDMHH.Items.RemoveAt(lsvDMHH.SelectedIndices[0]);
-                    clearForm();
-                    MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Không thể xóa Ngành Hàng này vì nó xuất hiện trong Loại Sản Phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else if(dt_hh.Rows.Count > 0)
+                {
+                    MessageBox.Show("Không thể xóa Ngành Hàng này vì nó xuất hiện trong Hàng Hóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
-                    MessageBox.Show("Bạn cần chọn mẫu tin để xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult dr = MessageBox.Show("Bạn có chắc muốn xóa?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dr == DialogResult.Yes)
+                    {
+                        DMHH.XoaDMHH(txtMaDM.Text);
+                        lsvDMHH.Items.RemoveAt(lsvDMHH.SelectedIndices[0]);
+                        clearForm();
+                        MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
-
+            }        
+            else
+            {
+                MessageBox.Show("Bạn cần chọn mẫu tin để xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

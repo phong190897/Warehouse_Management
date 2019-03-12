@@ -39,6 +39,14 @@ namespace QuanLyKhoHang.XuLi
             db.ExecuteNonQuery(sql);
         }
 
+        public DataTable KiemTraTonTai(string makh)
+        {
+            return db.Execute("SELECT DISTINCT A.MaKH " +
+                "FROM PhieuXuat A, KhachHang B " +
+                "WHERE A.MaKH = B.MaKH " +
+                "AND A.MaKH = N'" + makh + "'");
+        }
+
         public void CapNhatKH(string MaKH, string TenKH, string DiaChi, string dt, string email)
         {
             string sql = string.Format("UPDATE KhachHang SET TenKH = N'{0}'," +

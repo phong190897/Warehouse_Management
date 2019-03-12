@@ -16,11 +16,13 @@ namespace QuanLyKhoHang.GiaoDien
     {
 
         TaiKhoan tk;
+        DataTable dt;
 
         public frmDangKyTK()
         {
             InitializeComponent();
             tk = new TaiKhoan();
+            dt = new DataTable();
         }
 
         public void Hien_Quyen()
@@ -36,6 +38,7 @@ namespace QuanLyKhoHang.GiaoDien
         private void frmDangKyTK_Load(object sender, EventArgs e)
         {
             Hien_Quyen();
+            txt_TenTK.Focus();
         }
 
         public void clearForm()
@@ -48,23 +51,36 @@ namespace QuanLyKhoHang.GiaoDien
 
         private void btnDangKy_Click(object sender, EventArgs e)
         {
-            if (txt_TenTK.Text == "")
-                MessageBox.Show("Tên tài khoản ko được để trống", "Thông báo");
-            else if(txt_MatKhau.Text == "")
-                MessageBox.Show("Mật khẩu ko được để trống", "Thông báo");
-            else if(txt_MatKhau.Text != txt_MK2.Text)
-                MessageBox.Show("Mật khẩu ko trùng nhau", "Thông báo");
+            dt = tk.KiemTra_TK_TonTai(txt_TenTK.Text);
+
+            if (dt.Rows.Count > 0)
+            {
+                MessageBox.Show("Tên tài khoản đã tồn tại", "Thông báo");
+                txt_TenTK.Focus();
+            }
             else
             {
-                try
+                if (txt_TenTK.Text == "")
+                    MessageBox.Show("Tên tài khoản ko được để trống", "Thông báo");
+                else if (txt_MatKhau.Text == "")
+                    MessageBox.Show("Mật khẩu ko được để trống", "Thông báo");
+                else if (txt_MatKhau.Text != txt_MK2.Text)
+                    MessageBox.Show("Mật khẩu ko trùng nhau", "Thông báo");
+                else if (txtHoTen.Text == "")
+                    MessageBox.Show("Họ tên không được để trống", "Thông báo");
+                else
                 {
-                    tk.ThemTaiKhoan(txt_TenTK.Text, sha256_hash(txt_MatKhau.Text), cbb_QuyenDN.SelectedValue.ToString(), txtHoTen.Text);
-                    MessageBox.Show("Tạo tài khoản thành công", "Thông báo");
-                    clearForm();
-                }
-                catch(Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Thông báo");
+                    try
+                    {
+                        tk.ThemTaiKhoan(txt_TenTK.Text, sha256_hash(txt_MatKhau.Text), cbb_QuyenDN.SelectedValue.ToString(), txtHoTen.Text);
+                        MessageBox.Show("Tạo tài khoản thành công", "Thông báo");
+                        clearForm();
+                        this.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Thông báo");
+                    }
                 }
             }
         }
@@ -88,6 +104,50 @@ namespace QuanLyKhoHang.GiaoDien
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txt_TenTK_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                if (txt_TenTK.Text == "")
+                    MessageBox.Show("Tên tài khoản không được để trống", "Thông báo");
+                else
+                    txt_MatKhau.Focus();
+            }
+        }
+
+        private void txt_MatKhau_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                if (txt_MatKhau.Text == "")
+                    MessageBox.Show("Mật khẩu không được để trống", "Thông báo");
+                else
+                    txt_MK2.Focus();
+            }
+        }
+
+        private void txt_MK2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                if (txt_MK2.Text == "")
+                    MessageBox.Show("Mật khẩu không được để trống", "Thông báo");
+                else
+                    txtHoTen.Focus();
+            }
+        }
+
+        private void txtHoTen_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                if (txt_MK2.Text == "")
+                    MessageBox.Show("Mật khẩu không được để trống", "Thông báo");
+                else
+                    btnDangKy_Click(sender, e);
+            }
         }
     }
 }

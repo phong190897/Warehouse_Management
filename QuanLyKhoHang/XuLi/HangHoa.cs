@@ -143,5 +143,12 @@ namespace QuanLyKhoHang.XuLi
                 "WHERE MaHang = '{0}'", ma);
             return db.Execute(sql);
         }
+
+        public DataTable KiemTraHang()
+        {
+            return db.Execute("SELECT MaHang, TenHang " +
+                "FROM HangHoa " +
+                "WHERE SoLuong <= 10");
+        }
     }
 }

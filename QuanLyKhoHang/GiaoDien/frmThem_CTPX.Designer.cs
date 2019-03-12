@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmThem_CTPX));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.DTP_NgayXuat = new System.Windows.Forms.DateTimePicker();
             this.cbb_TenKH = new System.Windows.Forms.ComboBox();
@@ -314,6 +315,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lsvThem_CTPX);
             this.Controls.Add(this.layoutControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmThem_CTPX";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thêm Vào Chi Tiết Phiếu Xuất";

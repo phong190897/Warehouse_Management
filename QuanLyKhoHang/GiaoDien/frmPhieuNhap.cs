@@ -185,7 +185,7 @@ namespace QuanLyKhoHang.GiaoDien
             }
             else
             {
-                MessageBox.Show("Bạn phải chọn 1 dòng trong bảng Phiếu Nhập");
+                MessageBox.Show("Bạn phải chọn 1 dòng trong bảng Phiếu Nhập", "Thông báo");
             }
         }
 

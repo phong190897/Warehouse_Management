@@ -252,7 +252,7 @@
             // xrTableCell5
             // 
             this.xrTableCell5.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "vw_BaoCaoHangNhap_MoiThang.Tổng Tiền", "{0} vnđ")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "vw_BaoCaoHangNhap_MoiThang.Tổng Tiền", "{0:#,#} vnđ")});
             this.xrTableCell5.Dpi = 254F;
             this.xrTableCell5.Name = "xrTableCell5";
             this.xrTableCell5.StylePriority.UseTextAlignment = false;
@@ -517,7 +517,7 @@
             this.xrLabel2.StylePriority.UseBorderColor = false;
             this.xrLabel2.StylePriority.UseBorders = false;
             this.xrLabel2.StylePriority.UseTextAlignment = false;
-            xrSummary1.FormatString = "{0} vnđ";
+            xrSummary1.FormatString = "{0:#,#} vnđ";
             xrSummary1.IgnoreNullValues = true;
             xrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
             this.xrLabel2.Summary = xrSummary1;

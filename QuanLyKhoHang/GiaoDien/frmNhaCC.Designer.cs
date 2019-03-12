@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNhaCC));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnThem = new DevExpress.XtraBars.BarButtonItem();
@@ -37,13 +38,13 @@
             this.btnLuuLai = new DevExpress.XtraBars.BarButtonItem();
             this.btnHuy = new DevExpress.XtraBars.BarButtonItem();
             this.btnXuatExcel = new DevExpress.XtraBars.BarButtonItem();
-            this.btnInReport = new DevExpress.XtraBars.BarButtonItem();
             this.btnThoat = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.btnInReport = new DevExpress.XtraBars.BarButtonItem();
             this.btnLamMoi = new DevExpress.XtraBars.BarButtonItem();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.txtDienThoai = new DevExpress.XtraEditors.TextEdit();
@@ -169,13 +170,6 @@
             this.btnXuatExcel.Name = "btnXuatExcel";
             this.btnXuatExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnXuatExcel_ItemClick);
             // 
-            // btnInReport
-            // 
-            this.btnInReport.Caption = "In Report";
-            this.btnInReport.Id = 6;
-            this.btnInReport.ImageOptions.Image = global::QuanLyKhoHang.Properties.Resources.Reports_icon;
-            this.btnInReport.Name = "btnInReport";
-            // 
             // btnThoat
             // 
             this.btnThoat.Caption = "Thoát Form";
@@ -202,21 +196,21 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(839, 40);
+            this.barDockControlTop.Size = new System.Drawing.Size(839, 42);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 427);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 429);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(839, 23);
+            this.barDockControlBottom.Size = new System.Drawing.Size(839, 21);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 40);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 42);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Size = new System.Drawing.Size(0, 387);
             // 
@@ -224,9 +218,16 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(839, 40);
+            this.barDockControlRight.Location = new System.Drawing.Point(839, 42);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 387);
+            // 
+            // btnInReport
+            // 
+            this.btnInReport.Caption = "In Report";
+            this.btnInReport.Id = 6;
+            this.btnInReport.ImageOptions.Image = global::QuanLyKhoHang.Properties.Resources.Reports_icon;
+            this.btnInReport.Name = "btnInReport";
             // 
             // btnLamMoi
             // 
@@ -242,7 +243,7 @@
             this.layoutControl1.Controls.Add(this.txtTenNhaCC);
             this.layoutControl1.Controls.Add(this.txtMaNhaCC);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 40);
+            this.layoutControl1.Location = new System.Drawing.Point(0, 42);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(55, 232, 450, 400);
             this.layoutControl1.Root = this.layoutControlGroup1;
@@ -384,7 +385,7 @@
             this.groupControl1.Controls.Add(this.btnClear);
             this.groupControl1.Controls.Add(this.txtTimKiem);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupControl1.Location = new System.Drawing.Point(0, 106);
+            this.groupControl1.Location = new System.Drawing.Point(0, 108);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(839, 53);
             this.groupControl1.TabIndex = 10;
@@ -419,8 +420,9 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmNhaCC";
-            this.Text = "frmNhaCC";
+            this.Text = "Nhà Cung Cấp Hàng Hóa";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmNhaCC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();

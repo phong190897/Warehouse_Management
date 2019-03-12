@@ -262,5 +262,42 @@ namespace QuanLyKhoHang.GiaoDien
                 SetTextBox(false);
             }
         }
+
+        private void txtTimKiem_HoTen_TextChanged(object sender, EventArgs e)
+        {
+            if(txtTimKiem_HoTen.Text != "")
+            {
+                dt = tk.Tim_NV(txtTimKiem_HoTen.Text);
+                lsvTaiKhoan.Items.Clear();
+                lsvTaiKhoan.View = View.Details;
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    ListViewItem lvi;
+                    lvi = lsvTaiKhoan.Items.Add(dt.Rows[i]["TenTK"].ToString());
+                    lvi.SubItems.Add(dt.Rows[i][1].ToString());
+                    lvi.SubItems.Add(dt.Rows[i][2].ToString());
+                    lvi.SubItems.Add(dt.Rows[i][3].ToString());
+                }
+                if (lsvTaiKhoan.Items.Count > 0)
+                {
+                    lsvTaiKhoan.Items[0].Selected = true;
+                    lsvTaiKhoan.Items[0].ForeColor = Color.RoyalBlue;
+                }
+            }
+            else
+            {
+                LayDS_TaiKhoan();
+                ClearForm();
+                if (lsvTaiKhoan.Items.Count > 0)
+                {
+                    lsvTaiKhoan.Items[0].ForeColor = Color.Black;
+                }
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtTimKiem_HoTen.Text = "";
+        }
     }
 }

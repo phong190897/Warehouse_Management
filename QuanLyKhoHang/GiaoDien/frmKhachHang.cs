@@ -97,18 +97,26 @@ namespace QuanLyKhoHang.GiaoDien
         {
             if (lsvKhachHang.SelectedItems.Count > 0)
             {
-                DialogResult dr = MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Xóa nhân viên", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dr == DialogResult.Yes)
+                dt = kh.KiemTraTonTai(lsvKhachHang.SelectedItems[0].Text);
+                if (dt.Rows.Count > 0)
                 {
-                    if (lsvKhachHang.SelectedItems.Count > 0)
+                    MessageBox.Show("Không thể xóa Khách Hàng này vì xuất hiện trong Phiếu XUất", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    DialogResult dr = MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Xóa Khách Hàng", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dr == DialogResult.Yes)
                     {
-                        kh.XoaKH(txtMaKH.Text);
-                        lsvKhachHang.Items.RemoveAt(lsvKhachHang.SelectedIndices[0]);
-                        clearForm();
-                        MessageBox.Show("Xóa thành công", "Thông báo");
+                        if (lsvKhachHang.SelectedItems.Count > 0)
+                        {
+                            kh.XoaKH(txtMaKH.Text);
+                            lsvKhachHang.Items.RemoveAt(lsvKhachHang.SelectedIndices[0]);
+                            clearForm();
+                            MessageBox.Show("Xóa thành công", "Thông báo");
+                        }
+                        else
+                            MessageBox.Show("Bạn cần chọn mẫu tin cần xóa");
                     }
-                    else
-                        MessageBox.Show("Bạn cần chọn mẫu tin cần xóa");
                 }
             }
             else

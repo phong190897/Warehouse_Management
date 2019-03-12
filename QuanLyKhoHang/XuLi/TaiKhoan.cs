@@ -35,7 +35,7 @@ namespace QuanLyKhoHang.XuLi
 
         public DataTable Lay_DS_QuyenDN()
         {
-            return db.Execute("SELECT QuyenDN, TenQuyenDN FROM QUYENDN");
+            return db.Execute("SELECT QuyenDN, TenQuyenDN FROM QUYENDN WHERE QuyenDN != 'AD'");
         }
 
         public DataTable QuyenDN()
@@ -68,6 +68,19 @@ namespace QuanLyKhoHang.XuLi
         public DataTable layHoTen(string tentk, string mk)
         {
             return db.Execute("SELECT HoTen FROM TaiKhoan WHERE TenTK = '" + tentk + "' AND MatKhau = '" + mk + "'");
+        }
+
+        public DataTable Tim_NV(string hoten)
+        {
+            return db.Execute("SELECT TenTK, MatKhau, TenQuyenDN, HoTen " +
+                "FROM TaiKhoan A, QuyenDN B " +
+                "WHERE A.QuyenDN = B.QuyenDN " +
+                "AND HoTen LIKE N'%" + hoten + "%'");
+        }
+
+        public DataTable KiemTra_TK_TonTai(string tentk)
+        {
+            return db.Execute("SELECT * FROM TaiKhoan WHERE TenTK = '" + tentk + "'");
         }
 
     }

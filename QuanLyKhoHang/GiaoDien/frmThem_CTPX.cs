@@ -99,7 +99,8 @@ namespace QuanLyKhoHang.GiaoDien
                 int soluong = int.Parse(dt.Rows[0][0].ToString()) - int.Parse(lsvThem_CTPX.Items[i].SubItems[3].Text);                  
                 them_ctpx.CapNhatSoLuong_HH(lsvThem_CTPX.Items[i].Text, soluong.ToString());                      
             }
-            MessageBox.Show("Thêm Hàng Vào Kho Thành Công", "Thông báo");
+            MessageBox.Show("Xuất Hàng Thành Công", "Thông báo");
+            this.Close();
         }
 
         private void btnThem_Click(object sender, EventArgs e)

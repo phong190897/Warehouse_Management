@@ -53,7 +53,6 @@ namespace QuanLyKhoHang.GiaoDien
         private void frmSua_CTPX_Load(object sender, EventArgs e)
         {
             btnSua.Enabled = false;
-            btnThoat.Enabled = false;
             btnXoa.Enabled = false;
             dt = sua_ctpx.LayDS_TenKH(txtMaPX.Text);
             if (dt.Rows.Count > 0)

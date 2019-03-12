@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDS_PhieuNhap));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -127,6 +128,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.lsvPhieuNhap);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmDS_PhieuNhap";
             this.Text = "Danh Sách Phiếu Nhập";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

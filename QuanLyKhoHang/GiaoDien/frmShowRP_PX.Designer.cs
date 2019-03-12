@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
@@ -185,7 +186,7 @@
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem52 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem52 = new DevExpress.Utils.ToolTipItem();
             this.documentViewer1 = new DevExpress.XtraPrinting.Preview.DocumentViewer();
-            this.documentViewerRibbonController1 = new DevExpress.XtraPrinting.Preview.DocumentViewerRibbonController();
+            this.documentViewerRibbonController1 = new DevExpress.XtraPrinting.Preview.DocumentViewerRibbonController(this.components);
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.printPreviewBarItem2 = new DevExpress.XtraPrinting.Preview.PrintPreviewBarItem();
             this.printPreviewBarItem3 = new DevExpress.XtraPrinting.Preview.PrintPreviewBarItem();
@@ -268,9 +269,9 @@
             this.documentViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.documentViewer1.DocumentSource = typeof(QuanLyKhoHang.Report.rpPhieuXuat_MoiThang);
             this.documentViewer1.IsMetric = false;
-            this.documentViewer1.Location = new System.Drawing.Point(0, 141);
+            this.documentViewer1.Location = new System.Drawing.Point(0, 139);
             this.documentViewer1.Name = "documentViewer1";
-            this.documentViewer1.Size = new System.Drawing.Size(800, 282);
+            this.documentViewer1.Size = new System.Drawing.Size(800, 286);
             this.documentViewer1.TabIndex = 0;
             // 
             // documentViewerRibbonController1
@@ -351,7 +352,7 @@
             this.ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemProgressBar2,
             this.repositoryItemZoomTrackBar2});
-            this.ribbonControl1.Size = new System.Drawing.Size(800, 141);
+            this.ribbonControl1.Size = new System.Drawing.Size(800, 139);
             this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
             this.ribbonControl1.TransparentEditorsMode = DevExpress.Utils.DefaultBoolean.True;
             // 
@@ -1487,10 +1488,10 @@
             this.ribbonStatusBar1.ItemLinks.Add(this.barButtonItem2);
             this.ribbonStatusBar1.ItemLinks.Add(this.printPreviewStaticItem4);
             this.ribbonStatusBar1.ItemLinks.Add(this.zoomTrackBarEditItem2);
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 423);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 425);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(800, 27);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(800, 25);
             // 
             // frmShowRP_PX
             // 
@@ -1502,7 +1503,7 @@
             this.Controls.Add(this.ribbonStatusBar1);
             this.Controls.Add(this.ribbonControl1);
             this.Name = "frmShowRP_PX";
-            this.Text = "frmShowRP_PX";
+            this.Text = "Báo Cáo Phiếu Xuất";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.documentViewerRibbonController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();

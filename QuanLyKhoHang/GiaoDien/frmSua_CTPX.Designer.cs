@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSua_CTPX));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.txtTenKH = new DevExpress.XtraEditors.TextEdit();
             this.txtSoLuong = new DevExpress.XtraEditors.TextEdit();
@@ -309,8 +310,9 @@
             this.Controls.Add(this.lsvCTPX);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.layoutControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmSua_CTPX";
-            this.Text = "Sua_CTPX";
+            this.Text = "Sửa Chi Tiết Phiếu Xuất";
             this.Load += new System.EventHandler(this.frmSua_CTPX_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);

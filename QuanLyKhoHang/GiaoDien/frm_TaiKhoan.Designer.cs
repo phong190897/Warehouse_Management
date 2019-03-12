@@ -58,6 +58,10 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtTimKiem_HoTen = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -69,6 +73,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatKhau)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HoTen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.QuyenDN)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // barManager1
@@ -185,21 +190,21 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(995, 40);
+            this.barDockControlTop.Size = new System.Drawing.Size(995, 42);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 427);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 429);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(995, 23);
+            this.barDockControlBottom.Size = new System.Drawing.Size(995, 21);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 40);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 42);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Size = new System.Drawing.Size(0, 387);
             // 
@@ -207,7 +212,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(995, 40);
+            this.barDockControlRight.Location = new System.Drawing.Point(995, 42);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 387);
             // 
@@ -218,7 +223,7 @@
             this.layoutControl1.Controls.Add(this.txtMatKhau);
             this.layoutControl1.Controls.Add(this.txtTenTK);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 40);
+            this.layoutControl1.Location = new System.Drawing.Point(0, 42);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
             this.layoutControl1.Size = new System.Drawing.Size(995, 75);
@@ -318,13 +323,12 @@
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4});
-            this.lsvTaiKhoan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lsvTaiKhoan.FullRowSelect = true;
             this.lsvTaiKhoan.GridLines = true;
-            this.lsvTaiKhoan.Location = new System.Drawing.Point(0, 115);
+            this.lsvTaiKhoan.Location = new System.Drawing.Point(6, 160);
             this.lsvTaiKhoan.MultiSelect = false;
             this.lsvTaiKhoan.Name = "lsvTaiKhoan";
-            this.lsvTaiKhoan.Size = new System.Drawing.Size(995, 312);
+            this.lsvTaiKhoan.Size = new System.Drawing.Size(995, 261);
             this.lsvTaiKhoan.TabIndex = 5;
             this.lsvTaiKhoan.UseCompatibleStateImageBehavior = false;
             this.lsvTaiKhoan.View = System.Windows.Forms.View.Details;
@@ -338,7 +342,7 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Mật Khẩu";
-            this.columnHeader2.Width = 330;
+            this.columnHeader2.Width = 0;
             // 
             // columnHeader3
             // 
@@ -350,11 +354,52 @@
             this.columnHeader4.Text = "Họ Tên Nhân Viên";
             this.columnHeader4.Width = 240;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnClear);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.txtTimKiem_HoTen);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Location = new System.Drawing.Point(0, 117);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(995, 39);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Tìm Kiếm";
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(431, 14);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 2;
+            this.btnClear.Text = "Xóa";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(92, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Họ tên nhân viên:";
+            // 
+            // txtTimKiem_HoTen
+            // 
+            this.txtTimKiem_HoTen.Location = new System.Drawing.Point(108, 16);
+            this.txtTimKiem_HoTen.Name = "txtTimKiem_HoTen";
+            this.txtTimKiem_HoTen.Size = new System.Drawing.Size(317, 20);
+            this.txtTimKiem_HoTen.TabIndex = 0;
+            this.txtTimKiem_HoTen.TextChanged += new System.EventHandler(this.txtTimKiem_HoTen_TextChanged);
+            // 
             // frm_TaiKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(995, 450);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lsvTaiKhoan);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.barDockControlLeft);
@@ -376,6 +421,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatKhau)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HoTen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.QuyenDN)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -412,5 +459,9 @@
         private DevExpress.XtraLayout.LayoutControlItem MatKhau;
         private DevExpress.XtraLayout.LayoutControlItem HoTen;
         private DevExpress.XtraLayout.LayoutControlItem QuyenDN;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtTimKiem_HoTen;
     }
 }
