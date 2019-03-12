@@ -56,9 +56,9 @@ namespace QuanLyKhoHang.GiaoDien
             string maPN = dt.Rows[0][0].ToString();
             string s = maPN.Substring(2);
             int a = int.Parse(s);
-            if (a <= 99)
+            if (a < 99)
             {
-                if (a < 10)
+                if (a < 9)
                     px_Moi = "PX00" + (a + 1);
                 else
                     px_Moi = "PX0" + (a + 1);
@@ -94,9 +94,9 @@ namespace QuanLyKhoHang.GiaoDien
 
             for (int i = 0; i < lsvThem_CTPX.Items.Count; i++)
             {
-                them_ctpx.ThemCTPX(px_Moi, lsvThem_CTPX.Items[i].Text, lsvThem_CTPX.Items[i].SubItems[4].Text, lsvThem_CTPX.Items[i].SubItems[5].Text);
+                them_ctpx.ThemCTPX(px_Moi, lsvThem_CTPX.Items[i].Text, lsvThem_CTPX.Items[i].SubItems[3].Text, lsvThem_CTPX.Items[i].SubItems[4].Text);
                 dt = them_ctpx.LaySoLuong_HH(lsvThem_CTPX.Items[i].Text);
-                int soluong = int.Parse(dt.Rows[0][0].ToString()) - int.Parse(lsvThem_CTPX.Items[i].SubItems[2].Text);                  
+                int soluong = int.Parse(dt.Rows[0][0].ToString()) - int.Parse(lsvThem_CTPX.Items[i].SubItems[3].Text);                  
                 them_ctpx.CapNhatSoLuong_HH(lsvThem_CTPX.Items[i].Text, soluong.ToString());                      
             }
             MessageBox.Show("Thêm Hàng Vào Kho Thành Công", "Thông báo");
@@ -140,6 +140,22 @@ namespace QuanLyKhoHang.GiaoDien
             {
                 MessageBox.Show("Số lượng không được để trống", "Thông Báo");
                 txtSoLuong.Focus();
+            }
+        }
+
+        private void txtSoLuong_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtDonGiaXuat_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }

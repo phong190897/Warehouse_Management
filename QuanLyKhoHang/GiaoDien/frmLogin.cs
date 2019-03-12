@@ -13,7 +13,7 @@ using QuanLyKhoHang.XuLi;
 
 namespace QuanLyKhoHang.GiaoDien
 {
-    public partial class frmLogin : Form
+    public partial class frmLogin : DevExpress.XtraEditors.XtraForm
     {
         public static string tg_dn;
         DataTable dt;
@@ -76,9 +76,17 @@ namespace QuanLyKhoHang.GiaoDien
                 else if (dt_mk.Rows.Count > 0 && dt_qdn.Rows[0].ItemArray[0].Equals("QK") && dt_mk.Rows[0].ItemArray[0].Equals(hash_pw))
                 {
                     frmmdi = new frmMDI(hoten, "Quản Kho", tg_dn, txtID.Text);
+                    frmmdi.btnHangHoa.Enabled   = false;
+                    frmmdi.btnKhachHang.Enabled = false;
+                    frmmdi.btnDMHH.Enabled      = false;
+                    frmmdi.btnNhaCC.Enabled     = false;
+                    frmmdi.btnTaiKhoan.Enabled  = false;
+                    frmmdi.btnLoaiSP.Enabled    = false;
+                    frmmdi.btnDangNhap.Enabled  = false;
+                    frmmdi.btnPhieuNhap.Enabled = true;
+                    frmmdi.btnPhieuXuat.Enabled = true;
                     this.Hide();
                     frmmdi.Show();
-                    frmmdi.SetButton(false);
                 }
                 else
                     MessageBox.Show("Sai Mật Khẩu!!!!", "Thông báo");

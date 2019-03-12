@@ -4,35 +4,62 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using QuanLyKhoHang.XuLi;
 using Excel = Microsoft.Office.Interop.Excel;
 
+
 namespace QuanLyKhoHang.GiaoDien
 {
-    public partial class frmCTPN : Form
+    public partial class frm_TaiKhoan : Form
     {
 
-        ChiTietPhieuNhap ctpn;
+        TaiKhoan tk;
         DataTable dt;
-        bool themmoi = true;
+        bool themmoi;
 
-        public frmCTPN(string mapn)
+        public frm_TaiKhoan()
         {
             InitializeComponent();
-            txtMaPN.Text = mapn;
-            ctpn = new ChiTietPhieuNhap();
+            tk = new TaiKhoan();
             dt = new DataTable();
+            themmoi = true;
+        }
+
+        public void LayDS_TaiKhoan()
+        {
+            dt = tk.LayDanhSachTK();
+            lsvTaiKhoan.Items.Clear();
+            lsvTaiKhoan.View = View.Details;
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                ListViewItem lvi;
+                lvi = lsvTaiKhoan.Items.Add(dt.Rows[i]["TenTK"].ToString());
+                lvi.SubItems.Add(dt.Rows[i][1].ToString());
+                lvi.SubItems.Add(dt.Rows[i][2].ToString());
+                lvi.SubItems.Add(dt.Rows[i][3].ToString());
+            }
+        }
+
+        public void LayDS_QuyenDN()
+        {
+            dt = tk.Lay_DS_QuyenDN();
+            cbb_QuyenDN.DataSource = dt;
+            cbb_QuyenDN.DisplayMember = "TenQuyenDN";
+            cbb_QuyenDN.ValueMember = "QuyenDN";
+            if (cbb_QuyenDN.Items.Count > 0)
+                cbb_QuyenDN.SelectedIndex = 0;
         }
 
         public void SetTextBox(bool value)
         {
-            txtMaPN.Enabled       = value;
-            txtDonGiaNhap.Enabled = value;
-            txtSoLuong.Enabled    = value;
-            txtTongTien.Enabled   = value;
+            txtTenTK.Enabled = value;
+            txtMatKhau.Enabled = value;
+            txtHoTen.Enabled = value;
+            cbb_QuyenDN.Enabled = value;
         }
 
         public void SetButton(bool value)
@@ -45,80 +72,64 @@ namespace QuanLyKhoHang.GiaoDien
             btnThoat.Enabled = value;
         }
 
-        public void clearForm()
+        private void frm_TaiKhoan_Load(object sender, EventArgs e)
         {
-            cbbMaHang.SelectedIndex = 0;
-            txtSoLuong.Text = "";
-            txtDonGiaNhap.Text = "";
-            cbbMaHang.Focus();
+            LayDS_TaiKhoan();
+            LayDS_QuyenDN();
+            SetTextBox(false);
+            SetButton(true);
         }
 
-        public void HienThiDSHH()
+        public void ClearForm()
         {
-            DataTable dt_hh = ctpn.LayDSHangHoa();
-            cbbMaHang.DataSource = dt_hh;
-            cbbMaHang.DisplayMember = "TenHang";
-            cbbMaHang.ValueMember = "MaHang";
-            if (cbbMaHang.Items.Count > 0)
-                cbbMaHang.SelectedIndex = 0;
-        }
-
-        public void TongTien()
-        {
-            float tong = 0;
-            for (int i = 0; i < lsvCTPN.Items.Count; i++)
-            {
-                double soluong = Convert.ToDouble(lsvCTPN.Items[i].SubItems[2].Text);
-                double dongia = Convert.ToDouble(lsvCTPN.Items[i].SubItems[3].Text);
-                tong += (float)Convert.ToDouble(soluong * dongia);
-            }
-            txtTongTien.Text = tong.ToString();
-        }
-
-        public void LayDanhSachPN()
-        {
-            dt = ctpn.LayThongTinCTPN(txtMaPN.Text);
-            lsvCTPN.Items.Clear();
-            lsvCTPN.View = View.Details;
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                ListViewItem lvi;
-                lvi = lsvCTPN.Items.Add(dt.Rows[i]["MaPhieuNhap"].ToString());
-                lvi.SubItems.Add(dt.Rows[i][1].ToString());
-                lvi.SubItems.Add(dt.Rows[i][2].ToString());
-                lvi.SubItems.Add(dt.Rows[i][3].ToString());
-            }
+            txtTenTK.Text = "";
+            txtMatKhau.Text = "";
+            txtHoTen.Text = "";
+            cbb_QuyenDN.SelectedIndex = 0;
         }
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             themmoi = true;
             SetButton(false);
+            SetTextBox(true);
+            lsvTaiKhoan.Enabled = false;
+            ClearForm();
+            txtHoTen.Focus();
         }
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (lsvCTPN.SelectedItems.Count > 0)
+            if (lsvTaiKhoan.SelectedItems.Count > 0)
             {
-                DialogResult dr = MessageBox.Show("Bạn có chắc chắn muốn xóa?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult dr = MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Xóa nhân viên", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dr == DialogResult.Yes)
                 {
-                    ctpn.XoaCTPN(txtMaPN.Text, cbbMaHang.SelectedValue.ToString());
-                    lsvCTPN.Items.RemoveAt(lsvCTPN.SelectedIndices[0]);
-                    MessageBox.Show("Xóa thành công!!!", "Thông báo");
+                    if (lsvTaiKhoan.SelectedItems.Count > 0)
+                    {
+                        tk.XoaTaiKhoan(txtTenTK.Text);
+                        lsvTaiKhoan.Items.RemoveAt(lsvTaiKhoan.SelectedIndices[0]);
+                        ClearForm();
+                        MessageBox.Show("Xóa thành công", "Thông báo");
+                    }
+                    else
+                        MessageBox.Show("Bạn cần chọn mẫu tin cần xóa");
                 }
             }
             else
-                MessageBox.Show("Bạn cần chọn mẫu tin để xóa!!", "Thông báo");
-
+                MessageBox.Show("Bạn cần chọn mẫu tin cần xóa!!", "Thông báo");
         }
 
         private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (lsvCTPN.SelectedIndices.Count > 0)
+            if (lsvTaiKhoan.SelectedIndices.Count > 0)
             {
                 themmoi = false;
                 SetButton(false);
+                txtTenTK.Enabled = false;
+                txtMatKhau.Enabled = true;
+                txtHoTen.Enabled = true;
+                cbb_QuyenDN.Enabled = true;
             }
             else
                 MessageBox.Show("Bạn phải chọn mẫu tin cần cập nhật", "Sửa mẫu tin");
@@ -126,32 +137,43 @@ namespace QuanLyKhoHang.GiaoDien
 
         private void btnLuuLai_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            int    soluong = Convert.ToInt32(txtSoLuong.Text);
-            double dongia  = Convert.ToDouble(txtDonGiaNhap.Text);
-
             if (themmoi)
             {
-                ctpn.ThemCTPN(txtMaPN.Text, cbbMaHang.SelectedValue.ToString(), soluong, dongia);
+                tk.ThemTaiKhoan(txtTenTK.Text, sha256_hash(txtMatKhau.Text), cbb_QuyenDN.SelectedValue.ToString(), txtHoTen.Text);
                 MessageBox.Show("Thêm mới thành công");
             }
             else
             {
-                ctpn.CapNhatCTPN(txtMaPN.Text, cbbMaHang.SelectedValue.ToString(), soluong, dongia);
+                tk.CapNhatTaiKhoan(txtTenTK.Text, sha256_hash(txtMatKhau.Text), cbb_QuyenDN.SelectedValue.ToString(), txtHoTen.Text);
                 MessageBox.Show("Cập nhật thành công", "Thông báo");
             }
-            LayDanhSachPN();
-            clearForm();
+            LayDS_TaiKhoan();
+            ClearForm();
+            SetTextBox(false);
             SetButton(true);
+            lsvTaiKhoan.Enabled = true;
+        }
+
+        public static String sha256_hash(string value)
+        {
+            StringBuilder Sb = new StringBuilder();
+
+            using (var hash = SHA256.Create())
+            {
+                Encoding enc = Encoding.UTF8;
+                Byte[] result = hash.ComputeHash(enc.GetBytes(value));
+
+                foreach (Byte b in result)
+                    Sb.Append(b.ToString("x2"));
+            }
+
+            return Sb.ToString();
         }
 
         private void btnHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             SetButton(true);
-        }
-
-        private void btnLamMoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            LayDanhSachPN();
+            SetTextBox(false);
         }
 
         private void btnXuatExcel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -174,27 +196,27 @@ namespace QuanLyKhoHang.GiaoDien
                 {
                     //Đọc dữ liệu từ ListView xuất ra file excel có định dạng
                     sheet = wb.ActiveSheet;
-                    sheet.Name = "Danh Sách Nhà Cung Cấp";
-                    sheet.Range[sheet.Cells[1, 1], sheet.Cells[1, lsvCTPN.Columns.Count]].Merge();
+                    sheet.Name = "Danh Sách Nhân Viên";
+                    sheet.Range[sheet.Cells[1, 1], sheet.Cells[1, lsvTaiKhoan.Columns.Count]].Merge();
                     sheet.Cells[1, 1].Value = "Danh sách nhà cung cấp";
                     sheet.Cells[1, 1].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                     sheet.Cells[1, 1].Font.Size = 20;
                     sheet.Cells[1, 1].Borders.Weight = Excel.XlBorderWeight.xlThin;
                     //Sinh tiêu đề
-                    for (int i = 1; i <= lsvCTPN.Columns.Count; i++)
+                    for (int i = 1; i <= lsvTaiKhoan.Columns.Count; i++)
                     {
-                        sheet.Cells[2, i] = lsvCTPN.Columns[i - 1].Text;
+                        sheet.Cells[2, i] = lsvTaiKhoan.Columns[i - 1].Text;
                         sheet.Cells[2, i].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                         sheet.Cells[2, i].Font.Bold = true;
                         sheet.Cells[2, i].Borders.Weight = Excel.XlBorderWeight.xlThin;
                     }
                     //Sinh dữ liệu
-                    for (int i = 1; i <= lsvCTPN.Items.Count; i++)
+                    for (int i = 1; i <= lsvTaiKhoan.Items.Count; i++)
                     {
-                        ListViewItem item = lsvCTPN.Items[i - 1];
+                        ListViewItem item = lsvTaiKhoan.Items[i - 1];
                         sheet.Cells[i + 2, 1] = item.Text;
                         sheet.Cells[i + 2, 1].Borders.Weight = Excel.XlBorderWeight.xlThin;
-                        for (int j = 2; j <= lsvCTPN.Columns.Count; j++)
+                        for (int j = 2; j <= lsvTaiKhoan.Columns.Count; j++)
                         {
                             sheet.Cells[i + 2, j] = item.SubItems[j - 1].Text;
                             sheet.Cells[i + 2, j].Borders.Weight = Excel.XlBorderWeight.xlThin;
@@ -216,11 +238,6 @@ namespace QuanLyKhoHang.GiaoDien
             }
         }
 
-        private void btnInReport_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-        }
-
         private void btnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             DialogResult dr = MessageBox.Show("Bạn có chắc chắn muốn thoát form?", "Thông báo", MessageBoxButtons.YesNo);
@@ -230,24 +247,20 @@ namespace QuanLyKhoHang.GiaoDien
             }
         }
 
-        private void frmCTPN_Load(object sender, EventArgs e)
+        private void lsvTaiKhoan_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LayDanhSachPN();
-            SetButton(true);
-            TongTien();
-            HienThiDSHH();
-        }
-
-        private void lsvCTPN_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (lsvCTPN.SelectedIndices.Count > 0)
+            if (lsvTaiKhoan.SelectedIndices.Count > 0)
             {
-                cbbMaHang.SelectedIndex = cbbMaHang.FindString(lsvCTPN.SelectedItems[0].SubItems[1].Text);
-                txtSoLuong.Text = lsvCTPN.SelectedItems[0].SubItems[2].Text;
-                txtDonGiaNhap.Text = lsvCTPN.SelectedItems[0].SubItems[3].Text;
+                txtTenTK.Text = lsvTaiKhoan.SelectedItems[0].Text;
+                txtMatKhau.Text = lsvTaiKhoan.SelectedItems[0].SubItems[1].Text;
+                cbb_QuyenDN.SelectedIndex = cbb_QuyenDN.FindString(lsvTaiKhoan.SelectedItems[0].SubItems[2].Text);
+                txtHoTen.Text = lsvTaiKhoan.SelectedItems[0].SubItems[3].Text;
             }
             else
-                clearForm();
+            {
+                ClearForm();
+                SetTextBox(false);
+            }
         }
     }
 }

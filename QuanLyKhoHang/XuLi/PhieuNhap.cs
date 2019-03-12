@@ -63,6 +63,18 @@ namespace QuanLyKhoHang.XuLi
             db.ExecuteNonQuery(sql);
         }
 
+        public void BaoCao_CTPN_MaPN(string mapn)
+        {
+            string sql = string.Format("ALTER VIEW vw_DS_CTPNhap_TheoMaPN AS " +
+                "SELECT A.MaPhieuNhap, A.NgayNhap, HoTen, C.TenHang, B.SoLuong, B.DonGiaNhap, B.SoLuong * B.DonGiaNhap AS 'Tổng Tiền' " +
+                "FROM PhieuNhap A, CT_Nhap B, HangHoa C, TaiKhoan D " +
+                "WHERE A.MaPhieuNhap = B.MaPhieuNhap " +
+                "AND B.MaHang = C.MaHang " +
+                "AND D.TenTK = A.TenTK " +
+                "AND A.MaPhieuNhap = '{0}'", mapn);
+            db.ExecuteNonQuery(sql);
+        }
+
         public void ThemCTPN(string ma, string mahh, string soluong, string dongianhap)
         {
             string sql = string.Format("INSERT INTO CT_Nhap VALUES('{0}', N'{1}', '{2}', '{3}')"

@@ -305,8 +305,8 @@ namespace QuanLyKhoHang.GiaoDien
 
         private void btnChiTietPhieuXuat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            frmCTPX frmctpx = new frmCTPX(txtMaPX.Text);
-            frmctpx.ShowDialog();
+            //frmCTPX frmctpx = new frmCTPX(txtMaPX.Text);
+            //frmctpx.ShowDialog();
         }
 
         private void btnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

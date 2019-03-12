@@ -76,6 +76,20 @@ namespace QuanLyKhoHang.XuLi
             db.ExecuteNonQuery(sql);
         }
 
+        public void BaoCao_CTPX_MaPX(string mapx)
+        {
+            string sql = string.Format("ALTER VIEW vw_DS_CTPXuat_TheoMaPX AS " +
+                "SELECT A.MaPhieuXuat, A.NgayXuat, HoTen, TenKH, C.TenHang, B.SoLuong, B.DonGiaXuat, B.SoLuong * B.DonGiaXuat AS 'Tổng Tiền' " +
+                "FROM PhieuXuat A, CT_Xuat B, HangHoa C, TaiKhoan D, KhachHang E " +
+                "WHERE A.MaPhieuXuat = B.MaPhieuXuat " +
+                "AND B.MaHang = C.MaHang " +
+                "AND D.TenTK = A.TenTK " +
+                "AND E.MaKH = A.MaKH " +
+                "AND A.MaPhieuXuat = '{0}'", mapx);
+
+            db.ExecuteNonQuery(sql);
+        }
+
         public void XoaPX(string MaPX)
         {
             string sql = string.Format("DELETE FROM PhieuXuat WHERE " +

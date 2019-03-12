@@ -40,7 +40,7 @@ namespace QuanLyKhoHang.XuLi
 
         public void ThemCTPX(string ma, string mahh, string soluong, string dongiaxuat)
         {
-            string sql = string.Format("INSERT INTO CT_Nhap VALUES('{0}', N'{1}', '{2}', '{3}')"
+            string sql = string.Format("INSERT INTO CT_Xuat VALUES('{0}', N'{1}', '{2}', '{3}')"
                 , ma, mahh, soluong, dongiaxuat);
             db.ExecuteNonQuery(sql);
         }

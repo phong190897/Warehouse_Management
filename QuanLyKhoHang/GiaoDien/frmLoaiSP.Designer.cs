@@ -37,7 +37,6 @@
             this.btnLuuLai = new DevExpress.XtraBars.BarButtonItem();
             this.btnHuy = new DevExpress.XtraBars.BarButtonItem();
             this.btnXuatExcel = new DevExpress.XtraBars.BarButtonItem();
-            this.btnInReport = new DevExpress.XtraBars.BarButtonItem();
             this.btnThoat = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -45,6 +44,7 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.btnLamMoi = new DevExpress.XtraBars.BarButtonItem();
+            this.btnInReport = new DevExpress.XtraBars.BarButtonItem();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.txtTenLoai = new DevExpress.XtraEditors.TextEdit();
             this.txtMaDanhMuc = new DevExpress.XtraEditors.TextEdit();
@@ -164,13 +164,6 @@
             this.btnXuatExcel.Name = "btnXuatExcel";
             this.btnXuatExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnXuatExcel_ItemClick);
             // 
-            // btnInReport
-            // 
-            this.btnInReport.Caption = "In Report";
-            this.btnInReport.Id = 7;
-            this.btnInReport.ImageOptions.Image = global::QuanLyKhoHang.Properties.Resources.Reports_icon;
-            this.btnInReport.Name = "btnInReport";
-            // 
             // btnThoat
             // 
             this.btnThoat.Caption = "Thoát Form";
@@ -197,21 +190,21 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(824, 40);
+            this.barDockControlTop.Size = new System.Drawing.Size(824, 42);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 427);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 429);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(824, 23);
+            this.barDockControlBottom.Size = new System.Drawing.Size(824, 21);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 40);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 42);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Size = new System.Drawing.Size(0, 387);
             // 
@@ -219,7 +212,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(824, 40);
+            this.barDockControlRight.Location = new System.Drawing.Point(824, 42);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 387);
             // 
@@ -230,13 +223,20 @@
             this.btnLamMoi.ImageOptions.Image = global::QuanLyKhoHang.Properties.Resources.refresh_icon;
             this.btnLamMoi.Name = "btnLamMoi";
             // 
+            // btnInReport
+            // 
+            this.btnInReport.Caption = "In Report";
+            this.btnInReport.Id = 7;
+            this.btnInReport.ImageOptions.Image = global::QuanLyKhoHang.Properties.Resources.Reports_icon;
+            this.btnInReport.Name = "btnInReport";
+            // 
             // layoutControl1
             // 
             this.layoutControl1.Controls.Add(this.txtTenLoai);
             this.layoutControl1.Controls.Add(this.txtMaDanhMuc);
             this.layoutControl1.Controls.Add(this.txtMaLoai);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 40);
+            this.layoutControl1.Location = new System.Drawing.Point(0, 42);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
             this.layoutControl1.Size = new System.Drawing.Size(824, 66);
@@ -350,7 +350,7 @@
             this.groupControl1.Controls.Add(this.btnClear);
             this.groupControl1.Controls.Add(this.txtTimKiem);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupControl1.Location = new System.Drawing.Point(0, 106);
+            this.groupControl1.Location = new System.Drawing.Point(0, 108);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(824, 55);
             this.groupControl1.TabIndex = 7;

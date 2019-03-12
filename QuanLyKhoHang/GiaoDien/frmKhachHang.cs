@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using QuanLyKhoHang.XuLi;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace QuanLyKhoHang.GiaoDien
 {
@@ -161,12 +162,64 @@ namespace QuanLyKhoHang.GiaoDien
 
         private void btnXuatExcel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
-        }
-
-        private void btnInReport_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
+            //Tạo đối tượng lưu tệp tin
+            SaveFileDialog fsave = new SaveFileDialog();
+            //Chỉ ra đuôi ở đây là .xlsx
+            fsave.Filter = "(Tất cả các tệp)|*.*|(Các tệp excel)|*.xlsx";
+            fsave.ShowDialog();
+            //Xử lý
+            if (fsave.FileName != "")
+            {
+                //Tạo Excel App
+                Excel.Application app = new Excel.Application();
+                //Tạo Workbook
+                Excel.Workbook wb = app.Workbooks.Add(Type.Missing);
+                //Tạo Worksheet
+                Excel._Worksheet sheet = null;
+                try
+                {
+                    //Đọc dữ liệu từ ListView xuất ra file excel có định dạng
+                    sheet = wb.ActiveSheet;
+                    sheet.Name = "Danh Sách Khách Hàng";
+                    sheet.Range[sheet.Cells[1, 1], sheet.Cells[1, lsvKhachHang.Columns.Count]].Merge();
+                    sheet.Cells[1, 1].Value = "Danh sách hàng hóa";
+                    sheet.Cells[1, 1].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    sheet.Cells[1, 1].Font.Size = 20;
+                    sheet.Cells[1, 1].Borders.Weight = Excel.XlBorderWeight.xlThin;
+                    //Sinh tiêu đề
+                    for (int i = 1; i <= lsvKhachHang.Columns.Count; i++)
+                    {
+                        sheet.Cells[2, i] = lsvKhachHang.Columns[i - 1].Text;
+                        sheet.Cells[2, i].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        sheet.Cells[2, i].Font.Bold = true;
+                        sheet.Cells[2, i].Borders.Weight = Excel.XlBorderWeight.xlThin;
+                    }
+                    //Sinh dữ liệu
+                    for (int i = 1; i <= lsvKhachHang.Items.Count; i++)
+                    {
+                        ListViewItem item = lsvKhachHang.Items[i - 1];
+                        sheet.Cells[i + 2, 1] = item.Text;
+                        sheet.Cells[i + 2, 1].Borders.Weight = Excel.XlBorderWeight.xlThin;
+                        for (int j = 2; j <= lsvKhachHang.Columns.Count; j++)
+                        {
+                            sheet.Cells[i + 2, j] = item.SubItems[j - 1].Text;
+                            sheet.Cells[i + 2, j].Borders.Weight = Excel.XlBorderWeight.xlThin;
+                        }
+                    }
+                    //Ghi lại
+                    wb.SaveAs(fsave.FileName);
+                    MessageBox.Show("Ghi thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    app.Quit();
+                    wb = null;
+                }
+            }
         }
 
         private void btnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

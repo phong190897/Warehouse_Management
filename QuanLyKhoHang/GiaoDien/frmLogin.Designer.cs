@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.txtID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,13 +39,16 @@
             this.linklb_DangKy = new System.Windows.Forms.LinkLabel();
             this.btnThoat = new System.Windows.Forms.Button();
             this.ck_HienMK = new System.Windows.Forms.CheckBox();
+            this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.SuspendLayout();
             // 
             // txtID
             // 
             this.txtID.Location = new System.Drawing.Point(240, 93);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(131, 20);
+            this.txtID.Size = new System.Drawing.Size(131, 21);
             this.txtID.TabIndex = 0;
             // 
             // label1
@@ -62,7 +67,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(150, 96);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 13);
+            this.label2.Size = new System.Drawing.Size(83, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Tên đăng nhập:";
             // 
@@ -80,7 +85,7 @@
             this.txtPWD.Location = new System.Drawing.Point(240, 137);
             this.txtPWD.Name = "txtPWD";
             this.txtPWD.PasswordChar = '*';
-            this.txtPWD.Size = new System.Drawing.Size(131, 20);
+            this.txtPWD.Size = new System.Drawing.Size(131, 21);
             this.txtPWD.TabIndex = 3;
             // 
             // btnDangNhap
@@ -119,11 +124,25 @@
             this.ck_HienMK.AutoSize = true;
             this.ck_HienMK.Location = new System.Drawing.Point(223, 181);
             this.ck_HienMK.Name = "ck_HienMK";
-            this.ck_HienMK.Size = new System.Drawing.Size(102, 17);
+            this.ck_HienMK.Size = new System.Drawing.Size(101, 17);
             this.ck_HienMK.TabIndex = 8;
             this.ck_HienMK.Text = "Show Password";
             this.ck_HienMK.UseVisualStyleBackColor = true;
             this.ck_HienMK.CheckedChanged += new System.EventHandler(this.ck_HienMK_CheckedChanged);
+            // 
+            // ribbonPage2
+            // 
+            this.ribbonPage2.Name = "ribbonPage2";
+            this.ribbonPage2.Text = "ribbonPage2";
+            // 
+            // ribbonPage3
+            // 
+            this.ribbonPage3.Name = "ribbonPage3";
+            this.ribbonPage3.Text = "ribbonPage3";
+            // 
+            // defaultLookAndFeel1
+            // 
+            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2010 Blue";
             // 
             // frmLogin
             // 
@@ -139,6 +158,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtID);
+            this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng Nhập";
@@ -158,5 +180,8 @@
         private System.Windows.Forms.CheckBox ck_HienMK;
         public System.Windows.Forms.TextBox txtID;
         public System.Windows.Forms.TextBox txtPWD;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage3;
+        private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
     }
 }

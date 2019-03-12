@@ -19,7 +19,8 @@ namespace QuanLyKhoHang.XuLi
 
         public DataTable LayDanhSachTK()
         {
-            return db.Execute("SELECT * FROM TaiKhoan");
+            return db.Execute("SELECT TenTk, MatKhau, TenQuyenDN, HoTen FROM TaiKhoan A, QuyenDN B " +
+                "WHERE A.QuyenDN = B.QuyenDN");
         }
 
         public DataTable Lay_QuyenDN(string tentk, string mk)
@@ -55,7 +56,7 @@ namespace QuanLyKhoHang.XuLi
 
         public void CapNhatTaiKhoan(string tenTK, string mk, string quyen, string hoten)
         {
-            string sql = string.Format("UPDATE TaiKhoan SET MatKhau = '{0}', QuyenDN = '{1}', HoTen = '{2}' WHERE  TenTK = '{3}'", mk, quyen, hoten, tenTK);
+            string sql = string.Format("UPDATE TaiKhoan SET MatKhau = '{0}', QuyenDN = '{1}', HoTen = N'{2}' WHERE  TenTK = '{3}'", mk, quyen, hoten, tenTK);
             db.ExecuteNonQuery(sql);
         }
 

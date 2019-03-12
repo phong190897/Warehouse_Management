@@ -8,6 +8,7 @@ using System.Text;
 using QuanLyKhoHang.GiaoDien;
 using System.Windows.Forms;
 using System.Threading;
+using QuanLyKhoHang.GiaoDien_Report;
 
 namespace QuanLyKhoHang
 {
@@ -162,7 +163,7 @@ namespace QuanLyKhoHang
         private void frmMDI_Load(object sender, EventArgs e)
         {
             skin();
-            SetButton(true);
+            //SetButton(true);
         }
 
         private void btnHangHoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -194,6 +195,96 @@ namespace QuanLyKhoHang
             frmLogin frmlogin = new frmLogin();
             frmlogin.Show();
             this.Close();
+        }
+
+        private void btn_RP_Nhap_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frmDS_Nhap = this.KiemTraTonTai(typeof(frmDS_PhieuNhap));
+            if (frmDS_Nhap != null)
+            {
+                frmDS_Nhap.Activate();
+            }
+            else
+            {
+                frmDS_PhieuNhap fdsn = new frmDS_PhieuNhap();
+                fdsn.MdiParent = this;
+                fdsn.Show();
+            }
+        }
+
+        private void btn_RP_Xuat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frmDS_Xuat = this.KiemTraTonTai(typeof(frmDS_PhieuXuat));
+            if (frmDS_Xuat != null)
+            {
+                frmDS_Xuat.Activate();
+            }
+            else
+            {
+                frmDS_PhieuXuat fdsx = new frmDS_PhieuXuat();
+                fdsx.MdiParent = this;
+                fdsx.Show();
+            }
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm_TonKho = this.KiemTraTonTai(typeof(frm_rp_TonKho));
+            if (frm_TonKho != null)
+            {
+                frm_TonKho.Activate();
+            }
+            else
+            {
+                frm_rp_TonKho f_rp_tk = new frm_rp_TonKho();
+                f_rp_tk.MdiParent = this;
+                f_rp_tk.Show();
+            }
+        }
+
+        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm_nhap_thang = this.KiemTraTonTai(typeof(frm_rp_Nhap_TrongThang));
+            if (frm_nhap_thang != null)
+            {
+                frm_nhap_thang.Activate();
+            }
+            else
+            {
+                frm_rp_Nhap_TrongThang f_rp_tk = new frm_rp_Nhap_TrongThang();
+                f_rp_tk.MdiParent = this;
+                f_rp_tk.Show();
+            }
+        }
+
+        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm_TonKho = this.KiemTraTonTai(typeof(frm_rp_Xuat_TrongThang));
+            if (frm_TonKho != null)
+            {
+                frm_TonKho.Activate();
+            }
+            else
+            {
+                frm_rp_Xuat_TrongThang f_rp_tk = new frm_rp_Xuat_TrongThang();
+                f_rp_tk.MdiParent = this;
+                f_rp_tk.Show();
+            }
+        }
+
+        private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm_TK = this.KiemTraTonTai(typeof(frm_TaiKhoan));
+            if (frm_TK != null)
+            {
+                frm_TK.Activate();
+            }
+            else
+            {
+                frm_TaiKhoan f_tk = new frm_TaiKhoan();
+                f_tk.MdiParent = this;
+                f_tk.Show();
+            }
         }
     }
 }

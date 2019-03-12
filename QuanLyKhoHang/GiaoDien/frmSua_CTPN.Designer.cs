@@ -86,6 +86,7 @@
             this.txtSoLuong.Size = new System.Drawing.Size(308, 20);
             this.txtSoLuong.StyleController = this.layoutControl1;
             this.txtSoLuong.TabIndex = 1;
+            this.txtSoLuong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoLuong_KeyPress);
             // 
             // txtDonGiaNhap
             // 
@@ -94,6 +95,7 @@
             this.txtDonGiaNhap.Size = new System.Drawing.Size(308, 20);
             this.txtDonGiaNhap.StyleController = this.layoutControl1;
             this.txtDonGiaNhap.TabIndex = 9;
+            this.txtDonGiaNhap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDonGiaNhap_KeyPress);
             // 
             // cbb_TenHang
             // 

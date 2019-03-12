@@ -39,13 +39,16 @@
     <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.BonusSkins.v17.1" />
+    <Reference Include="DevExpress.Charts.Designer.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Charts.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeConverter.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.CodeParser.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Dashboard.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Dashboard.v17.1.Win, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v17.1" />
     <Reference Include="DevExpress.DataAccess.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.DataAccess.v17.1.UI, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.ExpressApp.Reports.Win.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Map.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Office.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Pdf.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -56,6 +59,7 @@
     <Reference Include="DevExpress.TreeMap.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v17.1" />
     <Reference Include="DevExpress.Utils.v17.1.UI, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpf.ReportDesigner.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpo.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraBars.v17.1" />
     <Reference Include="DevExpress.Sparkline.v17.1.Core" />
@@ -115,18 +119,6 @@
     <Compile Include="frmSplashScreen.Designer.cs">
       <DependentUpon>frmSplashScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="GiaoDien\frmCTPN.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GiaoDien\frmCTPN.Designer.cs">
-      <DependentUpon>frmCTPN.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GiaoDien\frmCTPX.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GiaoDien\frmCTPX.Designer.cs">
-      <DependentUpon>frmCTPX.cs</DependentUpon>
-    </Compile>
     <Compile Include="GiaoDien\frmDangKyTK.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +130,18 @@
     </Compile>
     <Compile Include="GiaoDien\frmDMHH.Designer.cs">
       <DependentUpon>frmDMHH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\frmDS_PhieuNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GiaoDien\frmDS_PhieuNhap.Designer.cs">
+      <DependentUpon>frmDS_PhieuNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\frmDS_PhieuXuat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GiaoDien\frmDS_PhieuXuat.Designer.cs">
+      <DependentUpon>frmDS_PhieuXuat.cs</DependentUpon>
     </Compile>
     <Compile Include="GiaoDien\frmHangHoa.cs">
       <SubType>Form</SubType>
@@ -217,6 +221,42 @@
     <Compile Include="GiaoDien\frmSua_CTPX.Designer.cs">
       <DependentUpon>frmSua_CTPX.cs</DependentUpon>
     </Compile>
+    <Compile Include="GiaoDien\frm_TaiKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GiaoDien\frm_TaiKhoan.Designer.cs">
+      <DependentUpon>frm_TaiKhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien_Report\frm_rp_CTPN_MaPN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GiaoDien_Report\frm_rp_CTPN_MaPN.Designer.cs">
+      <DependentUpon>frm_rp_CTPN_MaPN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien_Report\frm_rp_CTPX_MaPX.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GiaoDien_Report\frm_rp_CTPX_MaPX.Designer.cs">
+      <DependentUpon>frm_rp_CTPX_MaPX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien_Report\frm_rp_Nhap_TrongThang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GiaoDien_Report\frm_rp_Nhap_TrongThang.Designer.cs">
+      <DependentUpon>frm_rp_Nhap_TrongThang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien_Report\frm_rp_TonKho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GiaoDien_Report\frm_rp_TonKho.Designer.cs">
+      <DependentUpon>frm_rp_TonKho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien_Report\frm_rp_Xuat_TrongThang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GiaoDien_Report\frm_rp_Xuat_TrongThang.Designer.cs">
+      <DependentUpon>frm_rp_Xuat_TrongThang.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -235,6 +275,36 @@
     </Compile>
     <Compile Include="Report\rpPhieuXuat_MoiThang.Designer.cs">
       <DependentUpon>rpPhieuXuat_MoiThang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\rp_CTPN_MaPN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rp_CTPN_MaPN.Designer.cs">
+      <DependentUpon>rp_CTPN_MaPN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\rp_CTPX_MaPX.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rp_CTPX_MaPX.Designer.cs">
+      <DependentUpon>rp_CTPX_MaPX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\rp_Nhap_TrongThang.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rp_Nhap_TrongThang.Designer.cs">
+      <DependentUpon>rp_Nhap_TrongThang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\rp_TonKho.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rp_TonKho.Designer.cs">
+      <DependentUpon>rp_TonKho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\rp_Xuat_TrongThang.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rp_Xuat_TrongThang.Designer.cs">
+      <DependentUpon>rp_Xuat_TrongThang.cs</DependentUpon>
     </Compile>
     <Compile Include="XuLi\ChiTietPhieuNhap.cs" />
     <Compile Include="XuLi\ChiTietPhieuXuat.cs" />
@@ -256,17 +326,17 @@
     <EmbeddedResource Include="frmSplashScreen.resx">
       <DependentUpon>frmSplashScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GiaoDien\frmCTPN.resx">
-      <DependentUpon>frmCTPN.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GiaoDien\frmCTPX.resx">
-      <DependentUpon>frmCTPX.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GiaoDien\frmDangKyTK.resx">
       <DependentUpon>frmDangKyTK.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GiaoDien\frmDMHH.resx">
       <DependentUpon>frmDMHH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GiaoDien\frmDS_PhieuNhap.resx">
+      <DependentUpon>frmDS_PhieuNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GiaoDien\frmDS_PhieuXuat.resx">
+      <DependentUpon>frmDS_PhieuXuat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GiaoDien\frmHangHoa.resx">
       <DependentUpon>frmHangHoa.cs</DependentUpon>
@@ -307,6 +377,24 @@
     <EmbeddedResource Include="GiaoDien\frmSua_CTPX.resx">
       <DependentUpon>frmSua_CTPX.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GiaoDien\frm_TaiKhoan.resx">
+      <DependentUpon>frm_TaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GiaoDien_Report\frm_rp_CTPN_MaPN.resx">
+      <DependentUpon>frm_rp_CTPN_MaPN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GiaoDien_Report\frm_rp_CTPX_MaPX.resx">
+      <DependentUpon>frm_rp_CTPX_MaPX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GiaoDien_Report\frm_rp_Nhap_TrongThang.resx">
+      <DependentUpon>frm_rp_Nhap_TrongThang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GiaoDien_Report\frm_rp_TonKho.resx">
+      <DependentUpon>frm_rp_TonKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GiaoDien_Report\frm_rp_Xuat_TrongThang.resx">
+      <DependentUpon>frm_rp_Xuat_TrongThang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -323,6 +411,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\rpPhieuXuat_MoiThang.resx">
       <DependentUpon>rpPhieuXuat_MoiThang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rp_CTPN_MaPN.resx">
+      <DependentUpon>rp_CTPN_MaPN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rp_CTPX_MaPX.resx">
+      <DependentUpon>rp_CTPX_MaPX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rp_Nhap_TrongThang.resx">
+      <DependentUpon>rp_Nhap_TrongThang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rp_TonKho.resx">
+      <DependentUpon>rp_TonKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rp_Xuat_TrongThang.resx">
+      <DependentUpon>rp_Xuat_TrongThang.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -403,6 +506,15 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Time-And-Date-Plus-1month-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Time-And-Date-Minus-1month-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\acount-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

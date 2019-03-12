@@ -157,7 +157,7 @@ namespace QuanLyKhoHang.GiaoDien
                 {
                     //Đọc dữ liệu từ ListView xuất ra file excel có định dạng
                     sheet = wb.ActiveSheet;
-                    sheet.Name = "Danh Sách Nhà Cung Cấp";
+                    sheet.Name = "Danh Mục Hàng Hóa";
                     sheet.Range[sheet.Cells[1, 1], sheet.Cells[1, lsvDMHH.Columns.Count]].Merge();
                     sheet.Cells[1, 1].Value = "Danh sách nhà cung cấp";
                     sheet.Cells[1, 1].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;

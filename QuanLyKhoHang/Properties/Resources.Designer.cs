@@ -63,6 +63,16 @@ namespace QuanLyKhoHang.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap acount_icon {
+            get {
+                object obj = ResourceManager.GetObject("acount-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap add_icon {
             get {
                 object obj = ResourceManager.GetObject("add-icon", resourceCulture);
@@ -266,6 +276,26 @@ namespace QuanLyKhoHang.Properties {
         internal static System.Drawing.Bitmap supplier_icon {
             get {
                 object obj = ResourceManager.GetObject("supplier-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Time_And_Date_Minus_1month_icon {
+            get {
+                object obj = ResourceManager.GetObject("Time-And-Date-Minus-1month-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Time_And_Date_Plus_1month_icon {
+            get {
+                object obj = ResourceManager.GetObject("Time-And-Date-Plus-1month-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
